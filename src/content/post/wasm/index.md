@@ -1,6 +1,6 @@
 ---
 title: 'Webassembly'
-description: 'Não é assembly, é webassembly mesmo, uma forma delidar com função nativas na web de forma performática'
+description: "No, it's not assembly, it's webassembly, a way to handle native functions though web in a performatic way"
 publishDate: "22 Mar 2023"
 updatedDate: "22 Mar 2023"
 coverImage:
@@ -9,39 +9,39 @@ coverImage:
 tags: ["webassembly", "performance"]
 ---
 
-# WebAssembly: Como e por que?
+# WebAssembly: How and Why?
 
-## NÃO!!
-Antes de tudo, webassembly não é somente assembly como vem a cabeça de muitos ao ler isto pela primeira vez, ninguém vai sofrer escrevendo na linguagem de programação mais baixo nível da vida, o webassembly, nada mais é do que um bytecode que permite utilizar linguagens além do JS no navegador, permitindo uma maior performance e trazendo uma série de mudanças na forma como sempre vinhamos trabalhando com a web.
+## NO!!
+Before all, webassembly it's not just assembly as most of you can think in a first read, no one will suffer writing in the most low level programming language ever made, the webassembly, it's nothing else than a bytecode that allows to use languages beyond JS in the browser, allowing a best performance and bringing a bunch of changes in the way that we have been working with web so far.
 
 ## Background
-Como muitos sabem, a web hoje é full Javascript, não importa se tu usa Typescript, ou se usa alguma outra linguagem, no final tudo é transpilado em javascript, pois é ela que possui acesso a DOM, Storage, WebSockets, dentre outras api do navegador, e tem sido assim por muito tempo, entretanto, o javascript por mais que seja uma linguagem linda que evoluiu muito ao decorrer dos anos, ela possui algumas limitações tais como:
+As much of you know, the web today is full Javascript, it doesn't matter if you uses Typescript, or if you use any other language, at the end of all, everything is transpiled into JS, because that's the language that has access to DOM, Storage, WebSockets, between others browser API's, and it has been that way for a while, however, the Javascript even being a beaultiful language that evolved a lot though the years, it still has some limitations such as:
 
-- Single thread, ou seja, não é boa para multitask
-- Ser baseada em texto requer maior carregamento de dados o que resulta em maior tempo de inicialização da página
-- A otimização do JIT para a interpretação consome CPU e bateria dos devices
-- Necessidade de reescrever bibliotecas existentes que não estejam escritas em JS
+- Single thread, what means, it's not good for multitask
+- Being based in text require more data being load what results in a bigger initialization time for the page
+- JIT optimization for interpretation requires a lot from CPU and battery in devices.
+- Need to require existent libraries that are not written in JS
 
-## E agora quem poderá nos defender?
-O WebAssembly, que a partir de agora vamos chamar apenas de WASM, é um bytecode interpretado pelo browser, que permite o uso de apis nativas e um processamento como se fosse uma aplicação instalada na maquina do usuário, e permitindo o uso de linguagens que não sejam o javascript para trabalhar com a web.
+## And now, who can defend us?
+The WebAssembly, which we going to call just as WASM right now, is a bytecode interpreted by browser, that alows the use of native APIs, and processing as it was an application instaled in users device, and allowing use of languages that are not JS to work with web.
 
-Algumas das features mais fortes do WASM são:
+Some of the strongest features that WASM has are:
 
-- É um bytecode, ou seja, NINGUÉM escreve um bytecode, mas sim usa alguma outra linguagem para compilar em WASM
-- É um formato binário, o que faz ser mais leve para ser carregado pelo navegador
-- É interpretado diretamente pela máquina, sem necessidade da otimização do JIT, pois já é otimizado durante a compilação.
-> Disclaimer: Um bytecode é um intermediário entre o código fonte e a aplicação final, onde ele será interpretado por uma máquina virtual, e não necessita de pré-processamento ou validação de sintaxe ou dados como os compiladores fazem, aumentando sua performance na execução e possibilitando a portabilidade entre diferentes arquiteturas.
+- It's a bytecode, what means, ANYONE write a bytecode, but uses it with some another language to compile in WASM
+- It's a bin format, what makes it lighter to be load by browser
+- It's interpreted directly by machine, without the need to be optimized by JIT, as it's already optimized while compiling time
+> Disclaimer: A bytecode is an intermediate between the source code and the final aplication, where it's interpreted by a Virtual Machine, and there's no need for pre processing or syntax validation or data as compilers do, increasing it's performance during executino and enabling portability between different archtectures.
 
-## Como que usa isso?
-Primeiramente para criar o bytecode precisamos decidir qual linguagem de programação iremos utilizar, pelo wasm ser compilado podemos utilizar as linguagens de baixo nivel mais populares, como C, C++, Rust, dentre outras, porém, desenvolvedores web por estarem muito acostumados com JS, faria muito sentido existir uma linguagem que se assemelhe a sintaxe do JS para fins de wasm, e para isso criou-se o assemblyscript, e é ele que utilizaremos para este exemplo.
+## How do we use that?
+Firstly, to create the bytedoce we need to decide which programming language we gonna use, as wasm is compiled, we can use any low level programming language, as C, C++, Rust, among others, but, as web developers are so used to use JS, it makes way more senses exists a language similar to JS but for WASM, and thinking of that, the AssemblyScript was born, and this is language we gonna use for this example.
 
-## O AssemblyScript
-O assemblyscript (AS) nada mais é do que uma linguagem baseada no typescript, que por sua vez é feito em cima do javascript, porém com uma tipagem de mais baixo nível, ou seja, ao invés de nos preocuparmos se é um number ou uma string tal como o TS funciona, no AS precisamos nos preocupar com a quantidade de memória, se é um numero inteiro ou flutuante, todas as questões relacionadas a máquina mesmo.
+## The AssemblyScript
+The AssemblyScript (AS) is nothing more than a language based on Typescript, whi in turn is build on top of JS, but with a more low level type system, i.e., intead to worry if it's a number or string as TS does, in AS, we need to worry about the amount of memory, if a number is an integer or float, all questions related to machine itself.
 
-Obs: outra coisa também é que a estrutura mais conhecida do JS não pode ser utilizada que é o JSON, para isso devemos utilizar um MAP e informar quanto de memória ele terá, outras características sobre a linguagem podem ser acessadas em: https://www.assemblyscript.org/
+PS: a very important thing to keep in mind with AS is that the most common JS data structure cannot be used, instead of a JSON, we need to use a MAP, and inform how much memory it will have, another caracteristics about the language can be seen in: https://www.assemblyscript.org/
 
-## Exemplo
-Para este exemplo, faremos uma simples função de fatorial escrito em AS e uma em JS para termos uma comparação.
+## Example
+For this example, we gonna make a simple factorial function wriiten in AS, and one in JS for comparison.
 
 ```js title=main.ts
 export function fact(n: i32): i32 {
@@ -49,35 +49,34 @@ export function fact(n: i32): i32 {
 }
 ```
 
-Salvamos o código como main.ts e para compilar em wasm instalamos o assemblyscript globalmente com o npm
+Save the code as main.ts, and to compile as was, we install assembluscript globally with npm
 
 ```bash
 npm i -g assemblyscript
 ```
 
-E depois rodamos o seguinte comando para fazer a compilação
+And after that, we run the following command to make the compilation itself
 
 ```bash
 asc -b main.wasm main.ts
 ```
 
-Com isso teremos em nosso projeto um arquivo main.wasm
+With that, we have in our project a file main.wasm
 
-Agora criamos um index.html e um script.js para fazermos uso desse bytecode.
+Now, we create an index.html and a script.js so we can use this bytecode.
 
-Colocamos no html apenas dois span para mostrar os valores calculados
+We put in the html just enough elements to show the calculated values
 
 ```html title=index.html
 <body>
-      Fatorial com JS:
+      JS factorial:
       <span class="js"></span>
       <br />
-      Fatorial com WASM:
+      WASM factorial:
       <span class="wasm"></span>
 </body>
 ```
-
-No script.js implementamos o fatorial da mesma forma como no assemblyscript porém sem a tipagem, e também já aproveitamos para fazer a importação do WASM
+In script.js we implement the factorial same way we did in assemblyscript but withou types, and also as we're here we import the WASM
 
 ```js title=index.js
 async function loadWasmFunctions() {
@@ -94,21 +93,22 @@ document.querySelector(".js").innerText = factJs(12);
 document.querySelector(".wasm").innerText = fact(12);
 ```
 
-Ao rodar o arquivo podemos notar que possuímos os mesmo valores em ambos, ou seja de fato funcionou, nosso bytecode está sendo importando e funcionando no browser, mas você agora deve estar se fazendo a seguinte pergunta.
+When running the file we can note that we have the same values in both, what means indeed it worked, our bytecode is being imported and working in browser, but now you may be asking yourself,
 ![Wasm sample](./wasm-sample.png)
 
-> Mas você está usando TS pra JS, isso esta só transpilando e esta dando toda uma volta sem nenhum sentido, qual a moral disso?
+> But you're using TS to JS, this is just being transpiled and is going around with no senses, what is the reason for it?
 
-E é ai que você se engana, pois o wasm é REALMENTE um bytecode, se virmos agora a velocidade que levou pra executar.
+Here is when you're wrong, because wasm is REALLY a bytecode, if we sse the spped that it took to run.
 ![Wasm sample 2](./wasm-sample2.png)
 
-Notamos que obtivemos uma diferença absurda em relação ao JS, o wasm consegue rodar pelo menos 10x mais rápido pois está utilizando todo o poder da máquina, se provando ter toda a vantagem de performance e abrindo novos horizontes para o desenvolvimento web.
+We notice that we had a very significant difference when compared to JS, WASM can run at least 10x faster as it's using the whole power available in the machine, proving has all the perforamnce advantage opening new horizons for web development.
 
-## Devo usar o WebAssembly?
-Como toda tecnologia a resposta sempre será um belo depende, mas por ter um foco em performance, o WASM é recomendado quando precisamos por exemplo fazer simulações, realizar muitos cálculos, quando queremos utilizar recursos nativos, tal como uma placas gráficas ou codecs de áudio, mas para e-commerce, blogs ou landing pages, não é muito recomendado o uso dele.
+## Should i use WASM?
+As all new technology, the answer will always be a "It depends", but as it has a focus on performance, WASM is recomended when we need for example to make simulations, or a bunch of calculations, when we want to use native resources, as graphic boards, or audio codecs,  but for e-commerce, blogs, or landing pages, it's not well recommended.
 
-## Quem está por trás do WASM?
-Uma das magias do WASM é que TODOS os grandes por trás dos browsers mais conhecidos, estão participando de seu desenvolvimento, o que promete um futuro bastante promissor sobre como a web vai se seguir daqui pra frente.
+## Who is behind WASM?
+One of the best things about WASM, is that ALL the greatest behind all known browsers, is participating for it's develoment, what promises a bright future about how web will be from now.
 
-## Será essa a morte do javascript?
-Não, o WASM por mais que tenha varias vantagens, ainda n possui acesso a DOM, e faz mais sentido ele trabalhar lado a lado com o JS, do que substitui-lo, trazendo todo um poder a mais para os desenvolvedores terem suas aplicações cada vez mais performáticas e leves para o usuário utilizar.
+## Will it be the dead of JS?
+Nope, as much advantages WASM have, it still doesn't have access to DOM, e makes more senses works side by side with JS than replace it, bringing all the increase of power for developers having their application more performatic and lighter for the users.
+
