@@ -32,22 +32,22 @@ export const menuLinks: Array<{ title: string; path: string }> = [
     title: "Home",
     path: "/",
   },
-  {
-    title: "About",
-    path: "/about/",
-  },
-  {
-    title: "Work",
-    path: "/work/",
-  },
+  // {
+  //   title: "About",
+  //   path: "/about/",
+  // },
+  // {
+  //   title: "Work",
+  //   path: "/work/",
+  // },
   {
     title: "Blog",
     path: "/posts/",
   },
-  {
-    title: "Uses",
-    path: "/uses/",
-  },
+  // {
+  //   title: "Uses",
+  //   path: "/uses/",
+  // },
 ];
 
 // https://expressive-code.com/reference/configuration/
