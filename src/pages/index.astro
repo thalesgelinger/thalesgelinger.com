@@ -11,16 +11,24 @@ const allPostsByDate = sortMDByDate(allPosts).slice(0, MAX_POSTS);
 
 <PageLayout meta={{ title: "Home" }}>
 	<section>
-		<h1 class="title mb-6">Hey there!</h1>
-		<p class="mb-4">
-			Hi, I'm Thales Gelinger a lead developer very interested in a bunch of things actually, i have
-			a bacharel degree in Electrical Engineer, i'm interested from low level development with
-			Eletronic boards, to servers using more low level languages such as rust, to mobile
-			development hybrid or native, this site i used to post some thoughts in some those subjects,
-			and also show a little bit of what i've been doing recently.
-		</p>
-		<SocialList />
+		<h1 class="title mb-6">
+			Hey, i'm Thales a software developer with passion for users and developers experience
+		</h1>
 	</section>
+	<ul class="mb-4">
+		<li>
+			Mobile Tech Lead at <a class="font-bold" href="https://www.dentsu.com">Dentsu</a>
+		</li>
+		<li>
+			Graduated Electrical Engineer at <a class="font-bold" href="https://www.unisinos.br/"
+				>Unisinos</a
+			>
+		</li>
+		<li>Building Custom Keyboards</li>
+		<li>Building blaziling fast code (or at least trying 😅)</li>
+		<li>You can know more about me <a href="/about" class="font-bold">here</a></li>
+	</ul>
+	<SocialList />
 	<section aria-label="Blog post list" class="mt-16">
 		<h2 class="title mb-4 text-xl">Posts</h2>
 		<ul class="space-y-4">
