@@ -2,7 +2,7 @@
 import ThemeToggle from "../ThemeToggle.astro";
 import Search from "../Search.astro";
 import { menuLinks } from "@/site-config";
-import me from "@/assets/me.jpeg";
+import logo from "@/assets/tails_logo.png";
 import { Image } from "astro:assets";
 
 const url = new URL(Astro.request.url);
@@ -16,13 +16,13 @@ const url = new URL(Astro.request.url);
 			aria-current={url.pathname === "/" ? "page" : false}
 		>
 			<Image
-				class="me-3 h-10 w-10 rounded-[30%] sm:start-[-4.5rem] sm:me-0 sm:h-20 sm:w-20"
-				src={me}
+				class="me-3 h-10 w-10 sm:start-[-4.5rem] sm:me-0 sm:h-20 sm:w-20"
+				src={logo}
 				alt="Thales Gelinger"
 				loading="eager"
 			/>
 		</a>
-		<div class="ml-4">
+		<div class="ml-4 flex flex-col justify-center">
 			<span class="text-xl font-bold sm:text-2xl">Thales Gelinger</span>
 			<nav
 				id="navigation-menu"
