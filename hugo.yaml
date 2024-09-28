@@ -10,7 +10,7 @@ params:
 
   homeInfoParams:
     Title: Hey, i'm Thales Gelinger
-    Content: Welcome to my blog, you may find some interesting stuff here
+    Content: I build cool stuff, write about it, and repeat, take a look in my posts, you may find something interesting
 
   socialIcons:
     - name: github
