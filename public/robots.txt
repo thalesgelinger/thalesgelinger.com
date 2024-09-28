@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://thalesgelinger.com/sitemap-index.xml
